@@ -1,3 +1,8 @@
+---
+title: Building a News-Verification Agent with LangGraph
+description: A stage-by-stage training guide, from first principles to a live system.
+---
+
 # Building a News-Verification Agent with LangGraph
 
 **A stage-by-stage training guide, from first principles to a live system**
