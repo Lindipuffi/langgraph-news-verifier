@@ -48,4 +48,4 @@ python stage11_real_search.py
 ## Notes
 
 - `checkpoints*.sqlite` files (local run state) are gitignored.
-- `Learning Documents/` contains the accompanying training material (guide, slides, `TRAINING DOCUMENT.pdf`).
+- `Learning Documents/` contains the accompanying training material (guide, slides, `TRAINING DOCUMENT_v2.pdf`).
