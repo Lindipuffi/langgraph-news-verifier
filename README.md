@@ -4,7 +4,7 @@ Learn [LangGraph](https://langchain-ai.github.io/langgraph/) by building a news-
 
 ## 📘 [Read the training guide →](docs/TRAINING-GUIDE.md)
 
-**11 stages, written for people with no agent-framework background.** Each stage adds a single capability on top of the last, with the idea, the code, how to run it, and the pitfalls. Also available as a [PDF](docs/TRAINING-GUIDE.pdf) and [slides](docs/LangGraph-Project.pptx).
+**11 stages, written for people with no agent-framework background.** Each stage adds a single capability on top of the last, with the idea, the code, how to run it, and the pitfalls. Read it [online as a clean web page](https://lindipuffi.github.io/langgraph-news-verifier/), or as a [PDF](docs/TRAINING-GUIDE.pdf) or [slides](docs/LangGraph-Project.pptx).
 
 ![A verification run fanned out across parallel agents in LangGraph Studio](docs/img/stage8-studio.png)
 
