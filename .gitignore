@@ -14,3 +14,6 @@ __pycache__/
 
 # LangGraph dev server scratch dir
 .langgraph_api/
+
+# Generated thread id (Stage 11)
+.stage11_thread

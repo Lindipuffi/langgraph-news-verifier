@@ -1,51 +1,60 @@
 # LangGraph News Verifier
 
-A staged, hands-on learning project that builds up a **news-claim verification agent** with [LangGraph](https://langchain-ai.github.io/langgraph/), one concept at a time. Each `stageN_*.py` file introduces a single new capability on top of the previous one, so the repo doubles as a walkthrough of LangGraph's core features.
+Learn [LangGraph](https://langchain-ai.github.io/langgraph/) by building a news-claim verification agent one concept at a time — from "what is a graph" all the way to a live, web-searching fact-checker.
+
+## 📘 [Read the training guide →](docs/TRAINING-GUIDE.md)
+
+**11 stages, written for people with no agent-framework background.** Each stage adds a single capability on top of the last, with the idea, the code, how to run it, and the pitfalls. Also available as a [PDF](docs/TRAINING-GUIDE.pdf) and [slides](docs/LangGraph-Project.pptx).
+
+![A verification run fanned out across parallel agents in LangGraph Studio](docs/img/stage8-studio.png)
 
 ## What it does
 
-The end goal is an agent that takes a news claim, searches the web for supporting and contradicting evidence, and returns a reasoned verdict — with checkpointing, human-in-the-loop overrides, and parallel verification along the way.
+Give the agent a news claim. It searches the web for supporting and contradicting evidence, weighs it, and returns a reasoned verdict — with persistent memory, human-in-the-loop overrides, and parallel verification along the way.
 
 ## The stages
 
-| File | Concept introduced |
-|------|--------------------|
-| `stage1_basics.py` | Minimal `StateGraph`, nodes, and edges |
-| `stage2_checkpointer.py` / `stage2_inspect.py` | Persisting state with a checkpointer; inspecting saved state |
-| `stage3_interrupt.py` | Interrupts / pausing a graph |
-| `stage5_subgraphs.py` | Composing graphs with subgraphs |
-| `stage6_verifier.py` | The claim-verification subgraph |
-| `stage7_fanout.py` | Fan-out / parallel node execution |
-| `stage8_finale.py` | Bringing the pieces together |
-| `stage9_human_override.py` | Human-in-the-loop overrides |
-| `stage10_real_articles.py` | Fetching and reasoning over real articles |
-| `stage11_real_search.py` | Live web search via Tavily |
+Each stage is one `stageN_*.py` file. Click a row to jump straight into that section of the guide.
 
-`studio_graph.py` + `langgraph.json` expose a graph for use with [LangGraph Studio](https://github.com/langchain-ai/langgraph-studio).
+| Stage | File | What it teaches |
+|-------|------|-----------------|
+| [1](docs/TRAINING-GUIDE.md#stage-1--a-graph-that-makes-a-decision) | `stage1_basics.py` | A graph that makes a decision — nodes, edges, state |
+| [2](docs/TRAINING-GUIDE.md#stage-2--memory-that-survives) | `stage2_checkpointer.py`, `stage2_inspect.py` | Memory that survives — checkpointers and inspecting saved state |
+| [3](docs/TRAINING-GUIDE.md#stage-3--pausing-for-a-human) | `stage3_interrupt.py` | Pausing for a human — interrupts |
+| [4](docs/TRAINING-GUIDE.md#stage-4--seeing-the-graph) | `studio_graph.py`, `langgraph.json` | Seeing the graph — visualizing it in LangGraph Studio |
+| [5](docs/TRAINING-GUIDE.md#stage-5--two-readings-one-reusable-machine) | `stage5_subgraphs.py` | Two readings, one reusable machine — subgraphs |
+| [6](docs/TRAINING-GUIDE.md#stage-6--the-agent-loop) | `stage6_verifier.py` | The agent loop — the claim-verification subgraph |
+| [7](docs/TRAINING-GUIDE.md#stage-7--many-agents-at-once) | `stage7_fanout.py` | Many agents at once — fan-out / parallel execution |
+| [8](docs/TRAINING-GUIDE.md#stage-8--escalate-only-what-is-uncertain) | `stage8_finale.py` | Escalate only what is uncertain — conditional routing |
+| [9](docs/TRAINING-GUIDE.md#stage-9--giving-the-human-real-authority) | `stage9_human_override.py` | Giving the human real authority — overrides |
+| [10](docs/TRAINING-GUIDE.md#stage-10--real-articles) | `stage10_real_articles.py` | Real articles — reasoning over fetched text |
+| [11](docs/TRAINING-GUIDE.md#stage-11--real-evidence-fully-live) | `stage11_real_search.py` | Real evidence, fully live — web search via Tavily |
 
 ## Setup
 
 ```bash
 python -m venv .venv
-.venv\Scripts\activate      # Windows
-pip install -r requirements.txt   # or install langgraph, langchain-anthropic, tavily-python
+.venv\Scripts\activate          # Windows (use: source .venv/bin/activate on macOS/Linux)
+pip install -r requirements.txt
 ```
 
-Create a `.env` file with your keys (this file is gitignored):
+Create a `.env` file with your keys (it's gitignored, so it never gets committed):
 
 ```
-ANTHROPIC_API_KEY=sk-ant-...
-TAVILY_API_KEY=tvly-...
+ANTHROPIC_API_KEY=sk-ant-...    # needed from Stage 5
+TAVILY_API_KEY=tvly-...         # needed from Stage 10
 LANGSMITH_API_KEY=lsv2_...      # optional, for tracing
 ```
 
-Then run any stage, e.g.:
+Then run any stage:
 
 ```bash
-python stage11_real_search.py
+python stage1_basics.py
 ```
+
+Packages and keys are only needed from the stage that introduces them — you can start Stage 1 with nothing but `langgraph`. See the [guide's setup section](docs/TRAINING-GUIDE.md#4-environment-and-setup) for the full walkthrough, including the Windows Smart App Control note.
 
 ## Notes
 
-- `checkpoints*.sqlite` files (local run state) are gitignored.
-- `Learning Documents/` contains the accompanying training material (guide, slides, `TRAINING DOCUMENT_v2.pdf`).
+- `.env`, `.venv/`, the `checkpoints*.sqlite` run state, and `__pycache__/` are gitignored.
+- Windows-specific Smart App Control workaround lives in `sac_workaround/`.

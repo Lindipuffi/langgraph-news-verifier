@@ -1,0 +1,9 @@
+# Pinned to the versions used in the training guide (section 4.1).
+# Python 3.11+ recommended.
+langgraph==1.2.8
+langchain-core==1.4.8
+langchain-anthropic==1.4.8
+langgraph-checkpoint-sqlite==3.1.0
+langgraph-cli[inmem]==0.4.31
+tavily-python==0.7.26
+python-dotenv
