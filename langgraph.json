@@ -1,0 +1,14 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "news_verifier": "./studio_graph.py:graph",
+    "stage5_perspectives": "./stage5_subgraphs.py:graph",
+    "stage6_verifier": "./stage6_verifier.py:verifier",
+    "stage7_fanout": "./stage7_fanout.py:graph",
+    "stage8_finale": "./stage8_finale.py:graph",
+    "stage9_human_override": "./stage9_human_override.py:graph",
+    "stage10_real_articles": "./stage10_real_articles.py:graph",
+    "stage11_real_search": "./stage11_real_search.py:graph"
+  },
+  "env": ".env"
+}
